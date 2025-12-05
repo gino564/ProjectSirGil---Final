@@ -125,12 +125,133 @@ TattooAppointment/
 
 ## Installation & Setup
 
-1. Ensure Django is installed in your environment
-2. Add 'appointments' to `INSTALLED_APPS` in settings.py
-3. Configure media files for image uploads
-4. Run migrations: `python manage.py makemigrations && python manage.py migrate`
-5. Collect static files: `python manage.py collectstatic`
-6. Create superuser and add artists through admin panel
+### Prerequisites
+- Python 3.8 or higher
+- pip (Python package installer)
+
+### Step-by-Step Installation
+
+1. **Clone the repository** (if not already done)
+   ```bash
+   git clone <repository-url>
+   cd ProjectSirGil---Final
+   ```
+
+2. **Navigate to the Django project directory**
+   ```bash
+   cd TattooAppointment
+   ```
+
+3. **Create a virtual environment** (recommended)
+   ```bash
+   # Windows
+   python -m venv venv
+   venv\Scripts\activate
+
+   # macOS/Linux
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+
+4. **Install required packages**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+5. **Run database migrations**
+   ```bash
+   python manage.py makemigrations
+   python manage.py migrate
+   ```
+
+6. **Create a superuser** (for admin access)
+   ```bash
+   python manage.py createsuperuser
+   ```
+   Follow the prompts to set username, email, and password.
+
+7. **Create media directory** (for uploads)
+   ```bash
+   # Windows
+   mkdir media
+
+   # macOS/Linux
+   mkdir -p media
+   ```
+
+8. **Run the development server**
+   ```bash
+   python manage.py runserver
+   ```
+
+9. **Access the application**
+   - Client Dashboard: http://localhost:8000/
+   - Admin Panel: http://localhost:8000/admin/
+
+### Initial Setup
+
+After running the server:
+
+1. **Log in to Admin Panel** (http://localhost:8000/admin/)
+   - Use the superuser credentials you created
+
+2. **Add Artists**
+   - Go to "Artists" section in admin
+   - Create artist profiles linked to user accounts
+
+3. **Test the Client Dashboard**
+   - Create a regular user account
+   - Log in and access the client dashboard
+   - Test booking appointments and submitting requests
+
+### Project Structure
+
+```
+TattooAppointment/
+├── manage.py                      # Django management script
+├── requirements.txt               # Python dependencies
+├── TattooAppointment/            # Main project configuration
+│   ├── __init__.py
+│   ├── settings.py               # Project settings
+│   ├── urls.py                   # Main URL routing
+│   ├── wsgi.py                   # WSGI configuration
+│   └── asgi.py                   # ASGI configuration
+└── appointments/                 # Main application
+    ├── models.py                 # Data models
+    ├── views.py                  # View logic
+    ├── urls.py                   # App URL routing
+    ├── forms.py                  # Form definitions
+    ├── admin.py                  # Admin configuration
+    ├── apps.py                   # App configuration
+    ├── migrations/               # Database migrations
+    ├── templates/               # HTML templates
+    │   └── appointments/
+    │       ├── base.html
+    │       ├── landing.html
+    │       ├── appointment_list.html
+    │       ├── request_detail.html
+    │       ├── design_list.html
+    │       ├── create_appointment.html
+    │       └── create_request.html
+    └── static/                  # Static files
+        └── appointments/
+            └── css/
+                └── dashboard.css
+```
+
+### Troubleshooting
+
+**Issue: "No module named django"**
+- Solution: Make sure you've activated your virtual environment and run `pip install -r requirements.txt`
+
+**Issue: "No such file or directory: manage.py"**
+- Solution: Make sure you're in the `TattooAppointment` directory (not the root project folder)
+
+**Issue: Images not loading**
+- Solution: Make sure the `media` directory exists and check `MEDIA_URL` and `MEDIA_ROOT` settings
+
+**Issue: CSS styles not applying**
+- Solution: In development, Django serves static files automatically. Make sure `DEBUG = True` in settings.py
 
 ## Future Enhancements
 
