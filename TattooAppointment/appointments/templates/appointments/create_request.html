@@ -1,0 +1,94 @@
+{% extends 'appointments/base.html' %}
+
+{% block title %}New Enquiry{% endblock %}
+
+{% block header_title %}Submit New Enquiry{% endblock %}
+{% block header_subtitle %}Tell us about your tattoo idea{% endblock %}
+
+{% block content %}
+
+<div class="card">
+    <form method="post" enctype="multipart/form-data" class="request-form">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+        <div style="background-color: rgba(239, 68, 68, 0.1); border-left: 4px solid var(--color-danger); padding: 1rem; margin-bottom: 1.5rem; border-radius: var(--border-radius);">
+            {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--color-text);">
+                    {{ field.label }}
+                    {% if field.field.required %}
+                    <span style="color: var(--color-danger);">*</span>
+                    {% endif %}
+                </label>
+
+                {% if field.help_text %}
+                <p style="font-size: 0.875rem; color: var(--color-text-light); margin-bottom: 0.5rem;">
+                    {{ field.help_text }}
+                </p>
+                {% endif %}
+
+                {{ field }}
+
+                {% if field.errors %}
+                <div style="color: var(--color-danger); font-size: 0.875rem; margin-top: 0.25rem;">
+                    {{ field.errors }}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+
+        <div style="background-color: rgba(212, 175, 55, 0.1); border-left: 4px solid var(--color-primary); padding: 1rem; margin: 1.5rem 0; border-radius: var(--border-radius);">
+            <h4 style="margin-bottom: 0.5rem; font-size: 1rem; font-weight: 600;">What happens next?</h4>
+            <ul style="margin-left: 1.25rem; color: var(--color-text-light); font-size: 0.875rem; line-height: 1.6;">
+                <li>Your request will be reviewed by our artists</li>
+                <li>You'll receive a notification once an artist is assigned</li>
+                <li>The artist will work on your design and share concepts</li>
+                <li>Once approved, you can book a session</li>
+            </ul>
+        </div>
+
+        <div class="btn-group">
+            <button type="submit" class="btn btn-primary">Submit Request</button>
+            <a href="{% url 'appointments:dashboard' %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<style>
+    .request-form input,
+    .request-form select,
+    .request-form textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 2px solid var(--color-secondary);
+        border-radius: var(--border-radius);
+        font-size: 1rem;
+        font-family: inherit;
+        transition: border-color 0.2s;
+    }
+
+    .request-form input:focus,
+    .request-form select:focus,
+    .request-form textarea:focus {
+        outline: none;
+        border-color: var(--color-primary);
+    }
+
+    .request-form textarea {
+        min-height: 150px;
+        resize: vertical;
+    }
+
+    .request-form input[type="file"] {
+        padding: 0.5rem;
+    }
+</style>
+
+{% endblock %}

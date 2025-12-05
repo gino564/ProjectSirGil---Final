@@ -1,0 +1,57 @@
+{% extends 'appointments/base.html' %}
+
+{% block title %}My Designs{% endblock %}
+
+{% block header_title %}My Designs{% endblock %}
+{% block header_subtitle %}View your approved tattoo designs{% endblock %}
+
+{% block content %}
+
+{% if designs %}
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--spacing-lg);">
+        {% for design in designs %}
+        <div class="card" style="padding: 0; overflow: hidden;">
+            <img src="{{ design.image.url }}" alt="Design" style="width: 100%; height: 250px; object-fit: cover;">
+            <div style="padding: var(--spacing-lg);">
+                <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: var(--spacing-sm);">
+                    {{ design.tattoo_request.title }}
+                </h3>
+                <div style="margin-bottom: var(--spacing-md); font-size: 0.875rem; color: var(--color-text-light);">
+                    <div>Artist: {{ design.artist }}</div>
+                    <div>Created: {{ design.created_at|date:"M j, Y" }}</div>
+                </div>
+                {% if design.description %}
+                <p style="color: var(--color-text-light); font-size: 0.875rem; margin-bottom: var(--spacing-md); line-height: 1.5;">
+                    {{ design.description }}
+                </p>
+                {% endif %}
+                <div class="btn-group">
+                    <a href="{% url 'appointments:request_detail' design.tattoo_request.id %}" class="btn btn-secondary btn-sm btn-block">
+                        View Request
+                    </a>
+                    <a href="{% url 'appointments:book_session' %}?request={{ design.tattoo_request.id }}" class="btn btn-primary btn-sm btn-block">
+                        Book Session
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="card">
+        <div class="empty-state">
+            <div class="empty-state-icon">🎨</div>
+            <h3 class="empty-state-title">No Designs Yet</h3>
+            <p class="empty-state-description">
+                You don't have any approved designs yet. Submit a request to get started!
+            </p>
+            <a href="{% url 'appointments:new_enquiry' %}" class="btn btn-primary">Submit New Request</a>
+        </div>
+    </div>
+{% endif %}
+
+<div class="card mt-lg">
+    <a href="{% url 'appointments:dashboard' %}" class="btn btn-secondary btn-block">Back to Dashboard</a>
+</div>
+
+{% endblock %}

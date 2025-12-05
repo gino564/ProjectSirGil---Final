@@ -1,0 +1,79 @@
+{% extends 'appointments/base.html' %}
+
+{% block title %}{{ request.title }} - Request Details{% endblock %}
+
+{% block header_title %}Request Details{% endblock %}
+{% block header_subtitle %}View and manage your tattoo design request{% endblock %}
+
+{% block content %}
+
+<div class="card">
+    <div class="section-header">
+        <h2 class="section-title">{{ request.title }}</h2>
+        <span class="request-status status-{{ request.status }}">
+            {{ request.get_status_display }}
+        </span>
+    </div>
+
+    <div class="request-detail-content">
+        {% if request.reference_image %}
+        <div class="request-detail-image mb-lg">
+            <img src="{{ request.reference_image.url }}" alt="{{ request.title }}" style="max-width: 100%; height: auto; border-radius: var(--border-radius);">
+        </div>
+        {% endif %}
+
+        <div class="request-detail-info mb-lg">
+            <h3 style="margin-bottom: 1rem; font-size: 1.125rem; font-weight: 600;">Request Information</h3>
+            <div style="display: grid; gap: 0.75rem;">
+                <div>
+                    <strong style="color: var(--color-text-light);">Artist:</strong>
+                    <span>{{ request.artist|default:"Not Assigned Yet" }}</span>
+                </div>
+                <div>
+                    <strong style="color: var(--color-text-light);">Submitted:</strong>
+                    <span>{{ request.created_at|date:"F j, Y at g:i A" }}</span>
+                </div>
+                <div>
+                    <strong style="color: var(--color-text-light);">Last Updated:</strong>
+                    <span>{{ request.updated_at|date:"F j, Y at g:i A" }}</span>
+                </div>
+                <div>
+                    <strong style="color: var(--color-text-light);">Status:</strong>
+                    <span>{{ request.get_status_display }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="request-detail-description mb-lg">
+            <h3 style="margin-bottom: 1rem; font-size: 1.125rem; font-weight: 600;">Description</h3>
+            <p style="line-height: 1.6; color: var(--color-text-light);">{{ request.description }}</p>
+        </div>
+
+        {% if request.designs.all %}
+        <div class="request-designs mb-lg">
+            <h3 style="margin-bottom: 1rem; font-size: 1.125rem; font-weight: 600;">Approved Designs</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem;">
+                {% for design in request.designs.all %}
+                <div class="card" style="padding: 0; overflow: hidden;">
+                    <img src="{{ design.image.url }}" alt="Design" style="width: 100%; height: 200px; object-fit: cover;">
+                    {% if design.description %}
+                    <div style="padding: 0.75rem;">
+                        <p style="font-size: 0.875rem; color: var(--color-text-light);">{{ design.description }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="btn-group">
+            <a href="{% url 'appointments:dashboard' %}" class="btn btn-secondary">Back to Dashboard</a>
+            {% if request.status == 'approved' %}
+                <a href="{% url 'appointments:book_session' %}?request={{ request.id }}" class="btn btn-primary">Book Session</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
