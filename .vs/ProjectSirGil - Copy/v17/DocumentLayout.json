@@ -1,0 +1,141 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\USER\\Documents\\ProjectSirGil - Copy\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Documents\\ProjectSirGil - Copy\\TattooAppointment\\appointments\\templates\\appointments\\landing.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TattooAppointment\\appointments\\templates\\appointments\\landing.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Documents\\ProjectSirGil - Copy\\TattooAppointment\\appointments\\urls.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TattooAppointment\\appointments\\urls.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Documents\\ProjectSirGil - Copy\\TattooAppointment\\appointments\\views.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TattooAppointment\\appointments\\views.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Documents\\ProjectSirGil - Copy\\TattooAppointment\\appointments\\templates\\appointments\\base.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TattooAppointment\\appointments\\templates\\appointments\\base.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Documents\\ProjectSirGil - Copy\\TattooAppointment\\appointments\\templates\\appointments\\appointment_list.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TattooAppointment\\appointments\\templates\\appointments\\appointment_list.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Documents\\ProjectSirGil - Copy\\TattooAppointment\\appointments\\templates\\appointments\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TattooAppointment\\appointments\\templates\\appointments\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER\\Documents\\ProjectSirGil - Copy\\TattooAppointment\\appointments\\templates\\appointments\\create_appointment.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TattooAppointment\\appointments\\templates\\appointments\\create_appointment.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "views.py",
+              "DocumentMoniker": "C:\\Users\\USER\\Documents\\ProjectSirGil - Copy\\TattooAppointment\\appointments\\views.py",
+              "RelativeDocumentMoniker": "TattooAppointment\\appointments\\views.py",
+              "ToolTip": "C:\\Users\\USER\\Documents\\ProjectSirGil - Copy\\TattooAppointment\\appointments\\views.py",
+              "RelativeToolTip": "TattooAppointment\\appointments\\views.py",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-11-21T02:24:55.994Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "urls.py",
+              "DocumentMoniker": "C:\\Users\\USER\\Documents\\ProjectSirGil - Copy\\TattooAppointment\\appointments\\urls.py",
+              "RelativeDocumentMoniker": "TattooAppointment\\appointments\\urls.py",
+              "ToolTip": "C:\\Users\\USER\\Documents\\ProjectSirGil - Copy\\TattooAppointment\\appointments\\urls.py",
+              "RelativeToolTip": "TattooAppointment\\appointments\\urls.py",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-11-21T02:16:30.728Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appointment_list.html",
+              "DocumentMoniker": "C:\\Users\\USER\\Documents\\ProjectSirGil - Copy\\TattooAppointment\\appointments\\templates\\appointments\\appointment_list.html",
+              "RelativeDocumentMoniker": "TattooAppointment\\appointments\\templates\\appointments\\appointment_list.html",
+              "ToolTip": "C:\\Users\\USER\\Documents\\ProjectSirGil - Copy\\TattooAppointment\\appointments\\templates\\appointments\\appointment_list.html",
+              "RelativeToolTip": "TattooAppointment\\appointments\\templates\\appointments\\appointment_list.html",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-11-21T02:13:36.735Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "create_appointment.html",
+              "DocumentMoniker": "C:\\Users\\USER\\Documents\\ProjectSirGil - Copy\\TattooAppointment\\appointments\\templates\\appointments\\create_appointment.html",
+              "RelativeDocumentMoniker": "TattooAppointment\\appointments\\templates\\appointments\\create_appointment.html",
+              "ToolTip": "C:\\Users\\USER\\Documents\\ProjectSirGil - Copy\\TattooAppointment\\appointments\\templates\\appointments\\create_appointment.html",
+              "RelativeToolTip": "TattooAppointment\\appointments\\templates\\appointments\\create_appointment.html",
+              "ViewState": "AgIAALQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-11-21T02:13:23.173Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "base.html",
+              "DocumentMoniker": "C:\\Users\\USER\\Documents\\ProjectSirGil - Copy\\TattooAppointment\\appointments\\templates\\appointments\\base.html",
+              "RelativeDocumentMoniker": "TattooAppointment\\appointments\\templates\\appointments\\base.html",
+              "ToolTip": "C:\\Users\\USER\\Documents\\ProjectSirGil - Copy\\TattooAppointment\\appointments\\templates\\appointments\\base.html",
+              "RelativeToolTip": "TattooAppointment\\appointments\\templates\\appointments\\base.html",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-11-21T02:09:52.754Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\USER\\Documents\\ProjectSirGil - Copy\\TattooAppointment\\appointments\\templates\\appointments\\index.html",
+              "RelativeDocumentMoniker": "TattooAppointment\\appointments\\templates\\appointments\\index.html",
+              "ToolTip": "C:\\Users\\USER\\Documents\\ProjectSirGil - Copy\\TattooAppointment\\appointments\\templates\\appointments\\index.html",
+              "RelativeToolTip": "TattooAppointment\\appointments\\templates\\appointments\\index.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-11-21T02:09:51.831Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "landing.html",
+              "DocumentMoniker": "C:\\Users\\USER\\Documents\\ProjectSirGil - Copy\\TattooAppointment\\appointments\\templates\\appointments\\landing.html",
+              "RelativeDocumentMoniker": "TattooAppointment\\appointments\\templates\\appointments\\landing.html",
+              "ToolTip": "C:\\Users\\USER\\Documents\\ProjectSirGil - Copy\\TattooAppointment\\appointments\\templates\\appointments\\landing.html",
+              "RelativeToolTip": "TattooAppointment\\appointments\\templates\\appointments\\landing.html",
+              "ViewState": "AgIAAAMDAAAAAAAAAAAowBIDAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-11-21T02:09:16.558Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

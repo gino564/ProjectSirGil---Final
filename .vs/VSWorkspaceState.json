@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\TattooAppointment",
+    "\\TattooAppointment\\appointments",
+    "\\TattooAppointment\\appointments\\migrations",
+    "\\TattooAppointment\\appointments\\templates",
+    "\\TattooAppointment\\appointments\\templates\\appointments"
+  ],
+  "PreviewInSolutionExplorer": false
+}
