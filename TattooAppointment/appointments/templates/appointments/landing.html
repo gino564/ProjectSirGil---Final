@@ -1,0 +1,158 @@
+{% extends 'appointments/base.html' %}
+
+{% block title %}Client Dashboard{% endblock %}
+
+{% block content %}
+
+<!-- Statistics Bar -->
+<div class="stats-bar">
+    <div class="stat-card">
+        <span class="stat-value">{{ stats.completed_sessions }}</span>
+        <span class="stat-label">Completed Sessions</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-value">{{ stats.upcoming_appointments }}</span>
+        <span class="stat-label">Upcoming Appointments</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-value">{{ stats.total_requests }}</span>
+        <span class="stat-label">Total Requests</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-value">{{ stats.approved_designs }}</span>
+        <span class="stat-label">Approved Designs</span>
+    </div>
+</div>
+
+<!-- Desktop Action Bar -->
+<div class="action-bar">
+    <div class="btn-group">
+        <a href="{% url 'appointments:book_session' %}" class="btn btn-primary">Book Session</a>
+        <a href="{% url 'appointments:view_designs' %}" class="btn btn-secondary">View Designs</a>
+        <a href="{% url 'appointments:manage_appointments' %}" class="btn btn-secondary">Manage Appointments</a>
+        <a href="{% url 'appointments:new_enquiry' %}" class="btn btn-secondary">New Enquiry</a>
+    </div>
+</div>
+
+<!-- Upcoming Appointments Section -->
+<section class="section">
+    <div class="section-header">
+        <h2 class="section-title">Upcoming Appointments</h2>
+    </div>
+
+    {% if upcoming_appointments %}
+        {% for appointment in upcoming_appointments %}
+        <div class="card appointment-card status-{{ appointment.status }}">
+            <div class="appointment-header">
+                <div>
+                    <div class="appointment-date">
+                        {{ appointment.scheduled_date|date:"l, F j, Y" }}
+                    </div>
+                    <div class="appointment-time">
+                        {{ appointment.scheduled_date|date:"g:i A" }}
+                        ({{ appointment.duration_hours }} hour{{ appointment.duration_hours|floatformat:0|add:"0"|pluralize:"s" }})
+                    </div>
+                </div>
+                <span class="appointment-status status-{{ appointment.status }}">
+                    {{ appointment.get_status_display }}
+                </span>
+            </div>
+            <div class="appointment-details">
+                <div class="appointment-artist">
+                    Artist: {{ appointment.artist }}
+                </div>
+                {% if appointment.tattoo_request %}
+                <div>
+                    Design: {{ appointment.tattoo_request.title }}
+                </div>
+                {% endif %}
+                {% if appointment.notes %}
+                <div class="mt-sm">
+                    <strong>Notes:</strong> {{ appointment.notes }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="card">
+            <div class="empty-state">
+                <div class="empty-state-icon">📅</div>
+                <h3 class="empty-state-title">No Upcoming Appointments</h3>
+                <p class="empty-state-description">
+                    You don't have any upcoming appointments scheduled.
+                </p>
+                <a href="{% url 'appointments:book_session' %}" class="btn btn-primary">Book Your First Session</a>
+            </div>
+        </div>
+    {% endif %}
+</section>
+
+<!-- My Requests Section -->
+<section class="section">
+    <div class="section-header">
+        <h2 class="section-title">My Requests</h2>
+        <a href="{% url 'appointments:new_enquiry' %}" class="btn btn-primary btn-sm">New Request</a>
+    </div>
+
+    {% if tattoo_requests %}
+        <div class="requests-grid">
+            {% for request in tattoo_requests %}
+            <div class="card request-card">
+                <div class="request-image-container">
+                    {% if request.reference_image %}
+                        <img src="{{ request.reference_image.url }}" alt="{{ request.title }}" class="request-image">
+                    {% else %}
+                        <div class="request-image-placeholder">🎨</div>
+                    {% endif %}
+                </div>
+                <div class="request-content">
+                    <div class="request-header">
+                        <h3 class="request-title">{{ request.title }}</h3>
+                        <div class="request-meta">
+                            {% if request.artist %}
+                                <span class="request-artist">Artist: {{ request.artist }}</span>
+                            {% else %}
+                                <span class="request-artist">Artist: Not Assigned</span>
+                            {% endif %}
+                            <span class="request-date">Submitted: {{ request.created_at|date:"M j, Y" }}</span>
+                        </div>
+                        <span class="request-status status-{{ request.status }}">
+                            {{ request.get_status_display }}
+                        </span>
+                    </div>
+
+                    <p class="request-description">{{ request.description }}</p>
+
+                    <a href="{% url 'appointments:request_detail' request.id %}" class="btn btn-secondary btn-sm btn-block">
+                        View Details
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="card">
+            <div class="empty-state">
+                <div class="empty-state-icon">✨</div>
+                <h3 class="empty-state-title">No Requests Yet</h3>
+                <p class="empty-state-description">
+                    Start your tattoo journey by submitting your first design request.
+                </p>
+                <a href="{% url 'appointments:new_enquiry' %}" class="btn btn-primary">Submit New Request</a>
+            </div>
+        </div>
+    {% endif %}
+</section>
+
+<!-- Mobile Sticky Action Bar -->
+<div class="action-bar-mobile">
+    <div class="btn-group">
+        <a href="{% url 'appointments:book_session' %}" class="btn btn-primary">Book Session</a>
+        <a href="{% url 'appointments:view_designs' %}" class="btn btn-secondary">Designs</a>
+        <a href="{% url 'appointments:manage_appointments' %}" class="btn btn-secondary">Manage</a>
+        <a href="{% url 'appointments:new_enquiry' %}" class="btn btn-secondary">Enquiry</a>
+    </div>
+</div>
+
+{% endblock %}

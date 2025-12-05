@@ -1,0 +1,125 @@
+{% extends 'appointments/base.html' %}
+
+{% block title %}Manage Appointments{% endblock %}
+
+{% block header_title %}Manage Appointments{% endblock %}
+{% block header_subtitle %}View and manage all your tattoo appointments{% endblock %}
+
+{% block content %}
+
+<!-- Filter Tabs -->
+<div class="card mb-lg">
+    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <a href="?filter=all" class="btn btn-sm {% if filter == 'all' or not filter %}btn-primary{% else %}btn-secondary{% endif %}">
+            All
+        </a>
+        <a href="?filter=upcoming" class="btn btn-sm {% if filter == 'upcoming' %}btn-primary{% else %}btn-secondary{% endif %}">
+            Upcoming
+        </a>
+        <a href="?filter=pending" class="btn btn-sm {% if filter == 'pending' %}btn-primary{% else %}btn-secondary{% endif %}">
+            Pending
+        </a>
+        <a href="?filter=confirmed" class="btn btn-sm {% if filter == 'confirmed' %}btn-primary{% else %}btn-secondary{% endif %}">
+            Confirmed
+        </a>
+        <a href="?filter=completed" class="btn btn-sm {% if filter == 'completed' %}btn-primary{% else %}btn-secondary{% endif %}">
+            Completed
+        </a>
+        <a href="?filter=cancelled" class="btn btn-sm {% if filter == 'cancelled' %}btn-primary{% else %}btn-secondary{% endif %}">
+            Cancelled
+        </a>
+    </div>
+</div>
+
+<!-- Appointments List -->
+{% if appointments %}
+    {% for appointment in appointments %}
+    <div class="card appointment-card status-{{ appointment.status }}">
+        <div class="appointment-header">
+            <div>
+                <div class="appointment-date">
+                    {{ appointment.scheduled_date|date:"l, F j, Y" }}
+                </div>
+                <div class="appointment-time">
+                    {{ appointment.scheduled_date|date:"g:i A" }}
+                    ({{ appointment.duration_hours }} hour{{ appointment.duration_hours|floatformat:0|add:"0"|pluralize:"s" }})
+                </div>
+            </div>
+            <span class="appointment-status status-{{ appointment.status }}">
+                {{ appointment.get_status_display }}
+            </span>
+        </div>
+        <div class="appointment-details">
+            <div class="appointment-artist">
+                Artist: {{ appointment.artist }}
+            </div>
+            {% if appointment.tattoo_request %}
+            <div>
+                Design: <a href="{% url 'appointments:request_detail' appointment.tattoo_request.id %}" style="color: var(--color-primary); text-decoration: none;">{{ appointment.tattoo_request.title }}</a>
+            </div>
+            {% endif %}
+            {% if appointment.notes %}
+            <div class="mt-sm">
+                <strong>Notes:</strong> {{ appointment.notes }}
+            </div>
+            {% endif %}
+
+            <div class="btn-group mt-md">
+                {% if appointment.status == 'pending' or appointment.status == 'confirmed' %}
+                    <a href="{% url 'appointments:cancel_appointment' appointment.id %}" class="btn btn-secondary btn-sm">Cancel</a>
+                {% endif %}
+                {% if appointment.status == 'confirmed' %}
+                    <a href="{% url 'appointments:reschedule_appointment' appointment.id %}" class="btn btn-secondary btn-sm">Reschedule</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    <!-- Pagination (if needed) -->
+    {% if is_paginated %}
+    <div class="card text-center">
+        <div class="btn-group" style="justify-content: center;">
+            {% if page_obj.has_previous %}
+                <a href="?page=1{% if filter %}&filter={{ filter }}{% endif %}" class="btn btn-secondary btn-sm">First</a>
+                <a href="?page={{ page_obj.previous_page_number }}{% if filter %}&filter={{ filter }}{% endif %}" class="btn btn-secondary btn-sm">Previous</a>
+            {% endif %}
+
+            <span style="padding: 0.5rem 1rem; display: flex; align-items: center;">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}{% if filter %}&filter={{ filter }}{% endif %}" class="btn btn-secondary btn-sm">Next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}{% if filter %}&filter={{ filter }}{% endif %}" class="btn btn-secondary btn-sm">Last</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+{% else %}
+    <div class="card">
+        <div class="empty-state">
+            <div class="empty-state-icon">📅</div>
+            <h3 class="empty-state-title">No Appointments Found</h3>
+            <p class="empty-state-description">
+                {% if filter %}
+                    No appointments match your selected filter.
+                {% else %}
+                    You haven't booked any appointments yet.
+                {% endif %}
+            </p>
+            <div class="btn-group" style="justify-content: center;">
+                {% if filter %}
+                    <a href="{% url 'appointments:manage_appointments' %}" class="btn btn-secondary">Clear Filter</a>
+                {% endif %}
+                <a href="{% url 'appointments:book_session' %}" class="btn btn-primary">Book New Session</a>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+<div class="card mt-lg">
+    <a href="{% url 'appointments:dashboard' %}" class="btn btn-secondary btn-block">Back to Dashboard</a>
+</div>
+
+{% endblock %}

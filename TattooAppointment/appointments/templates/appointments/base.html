@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Client Dashboard{% endblock %} - Tattoo Appointment System</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'appointments/css/dashboard.css' %}">
+
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header class="dashboard-header">
+        <div class="container">
+            <h1>{% block header_title %}Client Dashboard{% endblock %}</h1>
+            <p>{% block header_subtitle %}Manage your tattoo appointments and designs{% endblock %}</p>
+        </div>
+    </header>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

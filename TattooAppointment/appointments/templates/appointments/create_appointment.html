@@ -1,0 +1,80 @@
+{% extends 'appointments/base.html' %}
+
+{% block title %}Book Session{% endblock %}
+
+{% block header_title %}Book a Session{% endblock %}
+{% block header_subtitle %}Schedule your tattoo appointment{% endblock %}
+
+{% block content %}
+
+<div class="card">
+    <form method="post" class="appointment-form">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+        <div style="background-color: rgba(239, 68, 68, 0.1); border-left: 4px solid var(--color-danger); padding: 1rem; margin-bottom: 1.5rem; border-radius: var(--border-radius);">
+            {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--color-text);">
+                    {{ field.label }}
+                    {% if field.field.required %}
+                    <span style="color: var(--color-danger);">*</span>
+                    {% endif %}
+                </label>
+
+                {% if field.help_text %}
+                <p style="font-size: 0.875rem; color: var(--color-text-light); margin-bottom: 0.5rem;">
+                    {{ field.help_text }}
+                </p>
+                {% endif %}
+
+                {{ field }}
+
+                {% if field.errors %}
+                <div style="color: var(--color-danger); font-size: 0.875rem; margin-top: 0.25rem;">
+                    {{ field.errors }}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="btn-group mt-lg">
+            <button type="submit" class="btn btn-primary">Book Session</button>
+            <a href="{% url 'appointments:dashboard' %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<style>
+    .appointment-form input,
+    .appointment-form select,
+    .appointment-form textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 2px solid var(--color-secondary);
+        border-radius: var(--border-radius);
+        font-size: 1rem;
+        font-family: inherit;
+        transition: border-color 0.2s;
+    }
+
+    .appointment-form input:focus,
+    .appointment-form select:focus,
+    .appointment-form textarea:focus {
+        outline: none;
+        border-color: var(--color-primary);
+    }
+
+    .appointment-form textarea {
+        min-height: 100px;
+        resize: vertical;
+    }
+</style>
+
+{% endblock %}
